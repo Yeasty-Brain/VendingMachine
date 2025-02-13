@@ -16,6 +16,9 @@ public class vendingmachine {
         System.out.println("How much money would you like to enter into the machine?");
         int money = scanner.nextInt();
 
+        System.out.println("Type 'yes' to confirm or 'no' to cancel: ");
+        String confirmation = scanner.next().toLowerCase();
+
         switch (choice){
             case "1":
                 System.out.println("Oreos: $3.50");
@@ -38,7 +41,17 @@ public class vendingmachine {
                 change = money - 2.50;
                 break;
         }
-        System.out.printf("Here is your change: $%,.2f", change);
+
+        if (confirmation.equals("no")) {
+            System.out.println("Canceled Transaction");
+            System.out.printf("Here is your refund: $" + money);
+            return;
+        }
+        if (confirmation.equals("yes")) {
+
+            System.out.printf("Here is your change: $%,.2f\n", change);
+            System.out.println("Good snack choice");  
+        }  
 
     }
 }
