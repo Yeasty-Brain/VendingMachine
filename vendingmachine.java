@@ -3,6 +3,7 @@ import java.util.*;
 public class vendingmachine {
     public static int money = 0;
     public static double change = 0;
+    public static double amount = 0;
     public static void main(String[] args){
 
         //Create scanner
@@ -22,23 +23,28 @@ public class vendingmachine {
         switch (choice){
             case "1":
                 System.out.println("Oreos: $3.50");
-                change = money - 3.50;
+                amount = 3.50;
+                change = money - amount;
                 break;
             case "2":
                 System.out.println("Chips: $1.00");
-                change = money - 1.00;
+                amount = 1.00;
+                change = money - amount;
                 break;
             case "3":
                 System.out.println("Coca-cola: $2.50");
-                change = money - 2.50;
+                amount = 2.50;
+                change = money - amount;
                 break;
             case "4":
                 System.out.println("Pepsi: $1.00");
-                change = money - 1.00;
+                amount = 1.00;
+                change = money - amount;
                 break;
             case "5":
                 System.out.println("Water: $2.50");
-                change = money - 2.50;
+                amount = 2.50;
+                change = money - amount;
                 break;
         }
 
@@ -48,9 +54,14 @@ public class vendingmachine {
             return;
         }
         if (confirmation.equals("yes")) {
-
-            System.out.printf("Here is your change: $%,.2f\n", change);
-            System.out.println("Good snack choice");  
+            if (money < amount) {
+                System.out.println("You have not inserted enough money");
+                System.out.println("Canceled Transaction");
+            }
+            else {
+                System.out.printf("Here is your change: $%,.2f\n", change);
+                System.out.println("Good snack choice");  
+            }
         }  
 
     }
